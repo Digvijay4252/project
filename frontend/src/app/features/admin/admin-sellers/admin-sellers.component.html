@@ -1,0 +1,26 @@
+<section class="panel">
+  <h2>Seller Management</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Approval</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let seller of sellers">
+        <td>{{ seller.id }}</td>
+        <td>{{ seller.full_name }}</td>
+        <td>{{ seller.email }}</td>
+        <td>{{ seller.seller_approval }}</td>
+        <td>
+          <button *ngIf="canApprove(seller)" type="button" (click)="approve(seller.id)">Approve</button>
+          <button *ngIf="canBlock(seller)" type="button" (click)="block(seller.id)">Block</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

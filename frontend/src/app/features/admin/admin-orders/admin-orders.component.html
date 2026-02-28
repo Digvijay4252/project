@@ -1,0 +1,23 @@
+<section class="panel">
+  <h2>Complete Order History</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Store</th>
+        <th>Status</th>
+        <th>Total</th>
+        <th>Created</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td>{{ order.id }}</td>
+        <td>{{ order.store_name }}</td>
+        <td>{{ order.status }}</td>
+        <td>{{ order.total_amount }}</td>
+        <td>{{ order.created_at | date:'short' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</section>

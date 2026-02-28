@@ -1,0 +1,28 @@
+<section class="panel">
+  <h2>Orders Received</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Store</th>
+        <th>Status</th>
+        <th>Total</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td>{{ order.id }}</td>
+        <td>{{ order.store_name }}</td>
+        <td>{{ order.status }}</td>
+        <td>{{ order.total_amount }}</td>
+        <td>
+          <select #statusSelect [value]="order.status">
+            <option *ngFor="let status of statuses" [value]="status">{{ status }}</option>
+          </select>
+          <button type="button" (click)="update(order, statusSelect.value)">Update</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

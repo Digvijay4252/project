@@ -1,0 +1,37 @@
+.panel {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.filters input,
+.filters button {
+  padding: 10px;
+  border: 1px solid #ccd4df;
+  border-radius: 8px;
+}
+
+.filters button {
+  background: #1d4e89;
+  color: #fff;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.card {
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 12px;
+  background: #fcfcfc;
+}

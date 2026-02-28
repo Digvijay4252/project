@@ -1,0 +1,30 @@
+.panel {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+input,
+button {
+  padding: 8px;
+  border: 1px solid #d2dbe7;
+  border-radius: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid #e2e8f0;
+  padding: 8px;
+}

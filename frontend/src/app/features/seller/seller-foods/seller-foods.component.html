@@ -1,0 +1,34 @@
+<section class="panel">
+  <h2>Seller Food Management</h2>
+  <form class="grid" (ngSubmit)="saveFood()">
+    <input name="name" [(ngModel)]="form.name" placeholder="Name" required />
+    <input name="description" [(ngModel)]="form.description" placeholder="Description" required />
+    <input name="category" [(ngModel)]="form.category" placeholder="Category" required />
+    <input name="price" [(ngModel)]="form.price" type="number" placeholder="Price" required />
+    <input name="rating" [(ngModel)]="form.rating" type="number" step="0.1" placeholder="Rating" required />
+    <label><input name="isAvailable" [(ngModel)]="form.isAvailable" type="checkbox" /> Available</label>
+    <button type="submit">{{ editingId ? 'Update' : 'Add' }} Food</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Availability</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let food of foods">
+        <td>{{ food.name }}</td>
+        <td>{{ food.price }}</td>
+        <td>{{ food.is_available ? 'Yes' : 'No' }}</td>
+        <td>
+          <button type="button" (click)="edit(food)">Edit</button>
+          <button type="button" (click)="remove(food.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

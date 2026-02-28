@@ -1,0 +1,19 @@
+.panel {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.links a {
+  text-decoration: none;
+  background: #0f766e;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+}

@@ -1,1 +1,14 @@
-<router-outlet></router-outlet>
+<div class="shell">
+  <header class="topbar">
+    <div class="brand">Food Ordering Platform</div>
+    <nav *ngIf="authService.isLoggedIn()" class="nav">
+      <a *ngIf="role === 'USER'" routerLink="/user">User Dashboard</a>
+      <a *ngIf="role === 'SELLER'" routerLink="/seller">Seller Dashboard</a>
+      <a *ngIf="role === 'ADMIN'" routerLink="/admin">Admin Dashboard</a>
+      <button type="button" (click)="logout()">Logout</button>
+    </nav>
+  </header>
+  <main class="container">
+    <router-outlet></router-outlet>
+  </main>
+</div>

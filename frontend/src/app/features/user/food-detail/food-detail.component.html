@@ -1,0 +1,15 @@
+<section class="panel" *ngIf="food">
+  <h2>{{ food.name }}</h2>
+  <p>{{ food.description }}</p>
+  <p>Price: {{ food.price | currency:'INR' }}</p>
+  <p>Rating: {{ food.rating }}</p>
+  <p>Available: {{ food.is_available ? 'Yes' : 'No' }}</p>
+  <button type="button" (click)="goStore()">View Store</button>
+
+  <div class="order-box">
+    <label>Quantity</label>
+    <input type="number" [(ngModel)]="quantity" min="1" />
+    <button type="button" (click)="placeOrder()" [disabled]="!food.is_available">Place Order</button>
+  </div>
+  <p>{{ message }}</p>
+</section>
