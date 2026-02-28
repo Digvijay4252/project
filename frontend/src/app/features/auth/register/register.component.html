@@ -1,0 +1,28 @@
+<section class="auth-card">
+  <h2>Register</h2>
+  <form (ngSubmit)="onSubmit()">
+    <label>Full Name</label>
+    <input name="fullName" [(ngModel)]="form.fullName" required />
+
+    <label>Email</label>
+    <input name="email" [(ngModel)]="form.email" type="email" required />
+
+    <label>Password</label>
+    <input name="password" [(ngModel)]="form.password" type="password" required />
+    <small class="hint">Use 8+ chars with uppercase, lowercase, and number.</small>
+
+    <label>Role</label>
+    <select name="role" [(ngModel)]="form.role">
+      <option value="USER">USER</option>
+      <option value="SELLER">SELLER</option>
+    </select>
+
+    <button type="submit" [disabled]="loading">{{ loading ? 'Submitting...' : 'Create Account' }}</button>
+  </form>
+  <ul class="error-list" *ngIf="validationErrors.length > 0">
+    <li *ngFor="let msg of validationErrors">{{ msg }}</li>
+  </ul>
+  <p class="error" *ngIf="error">{{ error }}</p>
+  <p class="success" *ngIf="success">{{ success }}</p>
+  <p>Already registered? <a routerLink="/auth/login">Login</a></p>
+</section>

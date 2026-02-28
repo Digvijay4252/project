@@ -1,0 +1,24 @@
+.panel {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.order-box {
+  margin-top: 16px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+input,
+button {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #cfd8e3;
+}
+
+button {
+  background: #1d4e89;
+  color: #fff;
+}

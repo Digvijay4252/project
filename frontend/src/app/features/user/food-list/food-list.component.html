@@ -1,0 +1,24 @@
+<section class="panel">
+  <h2>Food Listing</h2>
+  <form class="filters" (ngSubmit)="fetchFoods()">
+    <input name="category" [(ngModel)]="filters.category" placeholder="Category" />
+    <input name="city" [(ngModel)]="filters.city" placeholder="City" />
+    <input name="minPrice" [(ngModel)]="filters.minPrice" placeholder="Min Price" type="number" />
+    <input name="maxPrice" [(ngModel)]="filters.maxPrice" placeholder="Max Price" type="number" />
+    <input name="minRating" [(ngModel)]="filters.minRating" placeholder="Min Rating" type="number" step="0.1" />
+    <button type="submit">Search</button>
+  </form>
+
+  <div *ngIf="loading">Loading foods...</div>
+  <div class="grid">
+    <article class="card" *ngFor="let food of foods">
+      <h3>{{ food.name }}</h3>
+      <p>{{ food.description }}</p>
+      <p>Category: {{ food.category }}</p>
+      <p>Price: {{ food.price | currency:'INR' }}</p>
+      <p>Rating: {{ food.rating }}</p>
+      <p>Store: {{ food.store_name }} ({{ food.city }})</p>
+      <a [routerLink]="['/user/foods', food.id]">View Details</a>
+    </article>
+  </div>
+</section>

@@ -1,0 +1,7 @@
+<section class="panel">
+  <h2>User Dashboard</h2>
+  <p>Welcome, {{ authService.getUser()?.full_name }}.</p>
+  <div class="links">
+    <a routerLink="/user/foods">Browse Foods</a>
+  </div>
+</section>

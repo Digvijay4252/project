@@ -1,0 +1,18 @@
+@import '../login/login.component.css';
+
+.success {
+  color: #027a48;
+}
+
+.hint {
+  margin-top: -6px;
+  margin-bottom: 6px;
+  color: #475467;
+  font-size: 12px;
+}
+
+.error-list {
+  color: #b42318;
+  margin: 8px 0 0 18px;
+  padding: 0;
+}

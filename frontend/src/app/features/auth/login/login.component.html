@@ -1,0 +1,14 @@
+<section class="auth-card">
+  <h2>Login</h2>
+  <form (ngSubmit)="onSubmit()">
+    <label>Email</label>
+    <input name="email" [(ngModel)]="form.email" type="email" required />
+
+    <label>Password</label>
+    <input name="password" [(ngModel)]="form.password" type="password" required />
+
+    <button type="submit" [disabled]="loading">{{ loading ? 'Signing in...' : 'Sign In' }}</button>
+  </form>
+  <p class="error" *ngIf="error">{{ error }}</p>
+  <p>Need an account? <a routerLink="/auth/register">Register</a></p>
+</section>

@@ -1,0 +1,15 @@
+.panel {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.links a {
+  display: inline-block;
+  margin-top: 10px;
+  text-decoration: none;
+  background: #1d4e89;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+}

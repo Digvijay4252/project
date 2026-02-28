@@ -1,0 +1,7 @@
+<div class="map-wrapper">
+  <div #mapContainer class="map-frame" title="Store Location Map"></div>
+</div>
+
+<a *ngIf="openMapUrl" [href]="openMapUrl" target="_blank" rel="noopener noreferrer" class="map-link">
+  Open map with marker
+</a>

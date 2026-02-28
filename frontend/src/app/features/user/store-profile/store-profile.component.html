@@ -1,0 +1,7 @@
+<section class="panel" *ngIf="store">
+  <h2>{{ store.name }}</h2>
+  <p>{{ store.description }}</p>
+  <p>{{ store.address }}, {{ store.city }}</p>
+  <p>Phone: {{ store.phone }}</p>
+  <app-map-view [latitude]="store.latitude" [longitude]="store.longitude"></app-map-view>
+</section>

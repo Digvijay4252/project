@@ -1,38 +1,36 @@
-const express = require('express');
-const cors = require('cors');
-const bodyParser = require('body-parser');
 require('dotenv').config();
 
-// Initialize database and models
-const db = require('./models');
+const app = require('./src/app');
+const { testConnection } = require('./src/config/database');
+const { initializeSchema } = require('./src/config/init-schema');
 
-const authRoutes = require('./routes/authRoutes');
-const userRoutes = require('./routes/userRoutes');
+const configuredPort = Number(process.env.PORT || 5000);
 
-const app = express();
+const bootstrap = async () => {
+  await testConnection();
+  try {
+    // Preferred path when sequelize is available.
+    const { syncSchema } = require('./src/sequelize-models');
+    await syncSchema();
+    console.log('Schema initialized');
+  } catch (error) {
+    // Fallback for restricted environments where sequelize cannot be installed.
+    if (error && error.code === 'MODULE_NOT_FOUND') {
+      await initializeSchema();
+      console.log('Schema initialized');
+    } else {
+      throw error;
+    }
+  }
+  app.listen(configuredPort, () => {
+    console.log(`Backend running on http://localhost:${configuredPort}`);
+  });
+};
 
-// Middleware
-app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-// Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/users', userRoutes);
-
-// Health check
-app.get('/api/health', (req, res) => {
-  res.status(200).json({ message: 'Server is running' });
-});
-
-// Error handling middleware
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ message: 'Internal server error' });
-});
-
-const PORT = process.env.PORT || 5000;
-
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+bootstrap().catch((error) => {
+  console.error('Failed to bootstrap server:', error?.message || error);
+  if (error?.stack) {
+    console.error(error.stack);
+  }
+  process.exit(1);
 });

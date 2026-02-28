@@ -1,0 +1,37 @@
+.auth-card {
+  max-width: 420px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: 0 8px 30px rgba(20, 30, 40, 0.08);
+}
+
+form {
+  display: grid;
+  gap: 10px;
+}
+
+label {
+  font-size: 13px;
+  color: #3e4a59;
+}
+
+input,
+button,
+select {
+  padding: 10px;
+  border: 1px solid #c8d0db;
+  border-radius: 8px;
+}
+
+button {
+  background: #c54b25;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.error {
+  color: #b42318;
+}

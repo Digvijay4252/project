@@ -1,0 +1,167 @@
+{
+  "info": {
+    "_postman_id": "5f421fb5-2e95-449f-a9dd-bd6db6b0a041",
+    "name": "Food Ordering Platform API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth - Register User",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fullName\": \"Test User\",\n  \"email\": \"testuser@foodapp.com\",\n  \"password\": \"Password@123\"\n}"
+        },
+        "url": "{{baseUrl}}/auth/register/user"
+      }
+    },
+    {
+      "name": "Auth - Register Seller",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fullName\": \"Test Seller\",\n  \"email\": \"testseller@foodapp.com\",\n  \"password\": \"Password@123\"\n}"
+        },
+        "url": "{{baseUrl}}/auth/register/seller"
+      }
+    },
+    {
+      "name": "Auth - Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"admin@foodapp.com\",\n  \"password\": \"Password@123\"\n}"
+        },
+        "url": "{{baseUrl}}/auth/login"
+      }
+    },
+    {
+      "name": "Foods - List",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{baseUrl}}/foods?page=1&limit=10&category=North%20Indian&city=Bengaluru"
+      }
+    },
+    {
+      "name": "Seller - Upsert Store Profile",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{sellerToken}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Spice Junction\",\n  \"description\": \"North Indian favorites\",\n  \"address\": \"MG Road\",\n  \"city\": \"Bengaluru\",\n  \"latitude\": 12.975301,\n  \"longitude\": 77.604901,\n  \"phone\": \"9876543210\"\n}"
+        },
+        "url": "{{baseUrl}}/stores/seller/me/profile"
+      }
+    },
+    {
+      "name": "Seller - Create Food",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{sellerToken}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Tandoori Roti\",\n  \"description\": \"Fresh tandoori roti\",\n  \"category\": \"Bread\",\n  \"price\": 25,\n  \"rating\": 4.2,\n  \"isAvailable\": true\n}"
+        },
+        "url": "{{baseUrl}}/foods"
+      }
+    },
+    {
+      "name": "User - Place Order",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{userToken}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"storeId\": 1,\n  \"items\": [\n    { \"foodId\": 1, \"quantity\": 1 },\n    { \"foodId\": 2, \"quantity\": 2 }\n  ],\n  \"notes\": \"Less spicy\"\n}"
+        },
+        "url": "{{baseUrl}}/orders"
+      }
+    },
+    {
+      "name": "Admin - Approve Seller",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{baseUrl}}/admin/sellers/4/approve"
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000/api/v1"
+    },
+    {
+      "key": "token",
+      "value": ""
+    },
+    {
+      "key": "userToken",
+      "value": ""
+    },
+    {
+      "key": "sellerToken",
+      "value": ""
+    }
+  ]
+}
